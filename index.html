@@ -20,7 +20,7 @@
       }
       .ui.vertical.padded.segment.container {
         height: 450px;
-        width: 500px;
+        width: 450px;
         position: relative;
         top: 15%
       }
@@ -72,14 +72,12 @@
             </div>
           </div>
         </div>
-
         <div class="field">
           <div class="ui left icon input">
             <input type="text" placeholder="{{ medium[login_n].desc }}">
             <i class="{{ medium[login_n].which_icon }} icon"></i>
           </div>
         </div>
-
         <!-- 验证码 -->
         <div class="field">
           <div class="ui left icon input">
@@ -96,7 +94,6 @@
     <div v-else class="ui vertical padded segment container">
       <div class="ui header" style="text-align: center;">
         <img src="static/images/logo-phone-green.png" alt="">
-
         <div class="ui large buttons">
           <a href="#" class="ui button" v-on:click="login_or_registration">登录</a>
           <div class="or"></div>
@@ -120,7 +117,7 @@
             <i class="lock icon"></i>
           </div>
         </div>
-
+        <!-- 确认密码 -->
         <div class="field">
           <div class="ui left icon input">
             <input type="password" placeholder="确认密码">
@@ -154,18 +151,16 @@
             <i class="{{ medium[register_n].which_icon }} icon"></i>
           </div>
         </div>
-        <!-- 验证码 -->
+        <!-- 邀请码 -->
         <div class="field">
           <div class="ui left icon input">
             <input type="text" placeholder="邀请码">
             <i class="check square icon"></i>
           </div>
         </div>
-
         <button class="fluid ui large green circular button" type="submit">注册</button>
       </div>
     </div>
-
 
     <script>
       var vm = new Vue({
