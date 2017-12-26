@@ -30,9 +30,9 @@
         <img src="static/images/logo-phone.png" alt="">
         <!-- 默认为登陆界面 -->
         <div class="ui large buttons">
-          <a href="#" class="ui blue button" v-on:click="isLogin=true">登录</a>
+          <a href="#" class="ui blue button" v-on:click="login_or_registration">登录</a>
           <div class="or"></div>
-          <a href="#" class="ui button" v-on:click="isLogin=flase">注册</a>
+          <a href="#" class="ui button" v-on:click="login_or_registration">注册</a>
         </div>
       </div>
       <div class="ui divider"></div>
@@ -55,19 +55,19 @@
         <div class="inline fields">
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency">
+              <input type="radio" checked="checked" name="frequency-login" v-on:click="login_n=0">
               <label>手机</label>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency">
+              <input type="radio" name="frequency-login" v-on:click="login_n=1">
               <label>固话</label>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency">
+              <input type="radio" name="frequency-login" v-on:click="login_n=2">
               <label>SIP分机</label>
             </div>
           </div>
@@ -75,8 +75,8 @@
 
         <div class="field">
           <div class="ui left icon input">
-            <input type="text" placeholder="请输入手机号码">
-            <i class="lock icon"></i>
+            <input type="text" placeholder="{{ medium[login_n].desc }}">
+            <i class="{{ medium[login_n].which_icon }} icon"></i>
           </div>
         </div>
 
@@ -98,9 +98,9 @@
         <img src="static/images/logo-phone.png" alt="">
 
         <div class="ui large buttons">
-          <a href="#" class="ui button" v-on:click="isLogin=true">登录</a>
+          <a href="#" class="ui button" v-on:click="login_or_registration">登录</a>
           <div class="or"></div>
-          <a href="#" class="ui green button" v-on:click="isLogin=false">注册</a>
+          <a href="#" class="ui green button" v-on:click="login_or_registration">注册</a>
         </div>
 
       </div>
@@ -131,27 +131,27 @@
         <div class="inline fields">
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency">
+              <input type="radio" name="frequency-register" checked="checked" v-on:click="register_n=0">
               <label>手机</label>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency">
+              <input type="radio" name="frequency-register" v-on:click="register_n=1">
               <label>固话</label>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency">
+              <input type="radio" name="frequency-register" v-on:click="register_n=2">
               <label>SIP分机</label>
             </div>
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
-            <input type="text" placeholder="请输入手机号码">
-            <i class="lock icon"></i>
+            <input type="text" placeholder="{{ medium[register_n].desc }}">
+            <i class="{{ medium[register_n].which_icon }} icon"></i>
           </div>
         </div>
         <!-- 验证码 -->
@@ -172,8 +172,27 @@
         el: "#app",
         data:{
           isLogin: true,
-
+          login_n: 0,
+          register_n: 0,
+          medium: [
+            {"desc": "请输入手机号码", "which_icon": "mobile"},
+            {"desc": "请输入固话号码", "which_icon": "text telephone"},
+            {"desc": "请输入SIP号码", "which_icon": "volume control phone"},
+          ]
         },
+        methods:{
+          whoBeChecked: function(number) {
+            this.login_n = number
+          },
+          whoBeChecked1: function(number) {
+            this.register_n = number
+          },
+          login_or_registration: function () {
+            this.isLogin = ! this.isLogin
+            this.login_n = 0
+            this.register_n = 0
+          }
+        }
       })
     </script>
 
