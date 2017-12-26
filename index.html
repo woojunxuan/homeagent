@@ -2,17 +2,180 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="static/js/vue1.js"></script>
+    <script type="text/javascript" src="static/js/reqwest.js"></script>
     <link rel="stylesheet" href="static/css/animate.css">
     <link rel="stylesheet" href="static/css/semantic.css">
     <link rel="Shortcut Icon" href="static/images/favicon.png" type="image/x-icon">
-    <script src="static/js/vue.js"></script>
-    <script src="static/js/vue1.js"></script>
-    <script src="static/js/reqwest.js"></script>
     <title>HomeAgent</title>
   </head>
-  <body>
-    <div class="ui segment">
+  <body id="app">
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #f1f1f1;
+      }
+      .ui.vertical.padded.segment.container {
+        height: 450px;
+        width: 500px;
+        position: relative;
+        top: 15%
+      }
+    </style>
+    <div class="ui vertical padded segment container" v-if="isLogin">
+      <div class="ui header" style="text-align: center;">
+        <img src="static/images/logo-phone.png" alt="">
+        <!-- 默认为登陆界面 -->
+        <div class="ui large buttons">
+          <a href="#" class="ui blue button" v-on:click="isLogin=true">登录</a>
+          <div class="or"></div>
+          <a href="#" class="ui button" v-on:click="isLogin=flase">注册</a>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+      <div class="ui form">
+        <!-- 用户名 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="用户名" pattern="[A-z0-9_]{8}">
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <!-- 密码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" placeholder="密码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <!-- 手机/固话/SIP分机选择 -->
+        <div class="inline fields">
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="frequency">
+              <label>手机</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="frequency">
+              <label>固话</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="frequency">
+              <label>SIP分机</label>
+            </div>
+          </div>
+        </div>
 
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="请输入手机号码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+
+        <!-- 验证码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="验证码">
+            <i class="check square icon"></i>
+            <button class="ui button">获取验证码</button>
+          </div>
+        </div>
+
+        <button class="fluid ui large blue circular button" type="submit">登录</button>
+      </div>
     </div>
+
+    <div v-else class="ui vertical padded segment container">
+      <div class="ui header" style="text-align: center;">
+        <img src="static/images/logo-phone.png" alt="">
+
+        <div class="ui large buttons">
+          <a href="#" class="ui button" v-on:click="isLogin=true">登录</a>
+          <div class="or"></div>
+          <a href="#" class="ui green button" v-on:click="isLogin=false">注册</a>
+        </div>
+
+      </div>
+      <div class="ui divider"></div>
+      <div class="ui form">
+        <!-- 用户名 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="用户名">
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <!-- 密码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" placeholder="密码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" placeholder="确认密码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <!-- 手机/固话/SIP分机选择 -->
+        <div class="inline fields">
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="frequency">
+              <label>手机</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="frequency">
+              <label>固话</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="frequency">
+              <label>SIP分机</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="请输入手机号码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <!-- 验证码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="邀请码">
+            <i class="check square icon"></i>
+          </div>
+        </div>
+
+        <button class="fluid ui large green circular button" type="submit">注册</button>
+      </div>
+    </div>
+
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data:{
+          isLogin: true,
+
+        },
+      })
+    </script>
+
   </body>
 </html>
