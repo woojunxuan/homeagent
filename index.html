@@ -55,20 +55,26 @@
         <div class="inline fields">
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" checked="checked" name="frequency-login" v-on:click="login_n=0">
-              <label>手机</label>
+              <a href="#">
+                <input type="radio" id="radio-mobile" checked="checked" name="frequency-login" v-on:click="login_n=0">
+                <label for="radio-mobile"><i class="mobile icon"></i>手机</label>
+              </a>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency-login" v-on:click="login_n=1">
-              <label>固话</label>
+              <a href="#">
+                <input type="radio" id="radio-telephone" name="frequency-login" v-on:click="login_n=1">
+                <label for="radio-telephone"><i class="text telephone icon"></i>固话</label>
+              </a>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency-login" v-on:click="login_n=2">
-              <label>SIP分机</label>
+              <a href="#">
+                <input type="radio" id="radio-sip" name="frequency-login" v-on:click="login_n=2">
+                <label for="radio-sip"><i class="volume control phone icon"></i>SIP分机</label>
+              </a>
             </div>
           </div>
         </div>
@@ -128,20 +134,26 @@
         <div class="inline fields">
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency-register" checked="checked" v-on:click="register_n=0">
-              <label>手机</label>
+              <a href="#">
+                <input type="radio" id="reg-radio-mobile" name="frequency-register" checked="checked" v-on:click="register_n=0">
+                <label for="reg-radio-mobile"><i class="mobile icon"></i>手机</label>
+              </a>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency-register" v-on:click="register_n=1">
-              <label>固话</label>
+              <a href="#">
+                <input type="radio" id="reg-radio-telephone" name="frequency-register" v-on:click="register_n=1">
+                <label for="reg-radio-telephone"><i class="text telephone icon"></i>固话</label>
+              </a>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="frequency-register" v-on:click="register_n=2">
-              <label>SIP分机</label>
+              <a href="#">
+                <input type="radio" id="reg-radio-sip" name="frequency-register" v-on:click="register_n=2">
+                <label for="reg-radio-sip"><i class="volume control phone icon"></i>SIP分机</label>
+              </a>
             </div>
           </div>
         </div>
