@@ -40,7 +40,7 @@
         <!-- 用户名 -->
         <div class="field">
           <div class="ui left icon input">
-            <input type="text" placeholder="用户名" pattern="[A-z0-9_]{8}">
+            <input type="text" placeholder="用户名" name="username" >
             <i class="user icon"></i>
           </div>
         </div>
@@ -181,11 +181,31 @@
           isLogin: true,
           login_n: 0,
           register_n: 0,
+          username: '',
+          usernameError: false,
+          userErrMsg: '',
+          password: "",
           medium: [
             {"desc": "请输入手机号码", "which_icon": "mobile"},
             {"desc": "请输入固话号码", "which_icon": "text telephone"},
             {"desc": "请输入SIP号码", "which_icon": "volume control phone"},
           ]
+        },
+        watch: {
+          username: function() {
+            var isText = /^[a-zA-Z0-9]+$/;
+            if (!isText.test(this.username)) {
+              this.usernameError = true;
+              this.userErrMsg = '請勿包含特殊字元';
+            }
+            else if (this.username.length > 10) {
+              this.usernameError = true;
+              this.userErrMsg = '請勿超過10個字';
+            }
+            else {
+              this.usernameError = false;
+            }
+          }
         },
         methods:{
           login_or_registration: function () {
