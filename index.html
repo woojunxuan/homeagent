@@ -174,11 +174,89 @@
       </div>
     </div>
 
+    <div v-if="isLogined" class="ui vertical padded segment container">
+      <div class="ui header" style="text-align: center;">
+        <img src="static/images/logo-phone-green.png" alt="">
+        <div class="ui large buttons">
+          <a href="#" class="ui button" v-on:click="login_or_registration">登录</a>
+          <div class="or"></div>
+          <a href="#" class="ui green button" v-on:click="login_or_registration">注册</a>
+        </div>
+
+      </div>
+      <div class="ui divider"></div>
+      <div class="ui form">
+        <!-- 用户名 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="用户名">
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <!-- 密码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" placeholder="密码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <!-- 确认密码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" placeholder="确认密码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <!-- 手机/固话/SIP分机选择 -->
+        <div class="inline fields">
+          <div class="field">
+            <div class="ui radio checkbox">
+              <a href="#">
+                <input type="radio" id="reg-radio-mobile" name="frequency-register" checked="checked" v-on:click="register_n=0">
+                <label for="reg-radio-mobile"><i class="mobile icon"></i>手机</label>
+              </a>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <a href="#">
+                <input type="radio" id="reg-radio-telephone" name="frequency-register" v-on:click="register_n=1">
+                <label for="reg-radio-telephone"><i class="text telephone icon"></i>固话</label>
+              </a>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <a href="#">
+                <input type="radio" id="reg-radio-sip" name="frequency-register" v-on:click="register_n=2">
+                <label for="reg-radio-sip"><i class="volume control phone icon"></i>SIP分机</label>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="{{ medium[register_n].desc }}">
+            <i class="{{ medium[register_n].which_icon }} icon"></i>
+          </div>
+        </div>
+        <!-- 邀请码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="邀请码">
+            <i class="check square icon"></i>
+          </div>
+        </div>
+        <button class="fluid ui large green circular button" type="submit">注册</button>
+      </div>
+    </div>
+
     <script>
       var vm = new Vue({
         el: "#app",
         data:{
           isLogin: true,
+          isLogined: false,
           login_n: 0,
           register_n: 0,
           username: '',
