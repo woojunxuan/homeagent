@@ -2,128 +2,42 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="static/js/vue1.js"></script>
     <script type="text/javascript" src="static/js/reqwest.js"></script>
     <link rel="stylesheet" href="static/css/animate.css">
     <link rel="stylesheet" href="static/css/semantic.css">
     <link rel="Shortcut Icon" href="static/images/favicon.png" type="image/x-icon">
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://cdn.staticfile.org/semantic-ui/2.2.7/semantic.min.css">
-    <script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://cdn.staticfile.org/semantic-ui/2.2.7/semantic.min.js"></script>
-    <script src="http://cdn.staticfile.org/vue/2.0.3/vue.js"></script>
-    <script src="http://cdn.staticfile.org/layer/2.3/layer.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-validator/2.1.7/vue-validator.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-form/0.3.1/vue-form.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-form/0.3.1/vue-form.js"></script>
     <title>HomeAgent</title>
   </head>
-  <body id="app">
-    <style media="screen">
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background-color: #f1f1f1;
-
-}
-      }
-      .ui.vertical.padded.segment.container {
-        height: 450px;
-        width: 450px;
-        position: relative;
-        top: 15%
-      }
-      #my-content {
-        position:absolute;
-        left:50%;
-        top:50%;
-        margin:-300px 0 0 -325px;
-      }
-    </style>
-
-      <div class="ui basic segment" style="width: 650px; height: 600px;" id="my-content">
-        <div class="ui bottom attached segment pushable" >
-          <div class="ui visible left demo vertical inverted sidebar labeled icon menu" >
-            <div class="item">
-              <i class="green user icon"></i> R8989
-            </div>
-              <a class="item">
-                <i class="mobile green icon"></i>
-                可用
-              </a>
-              <div class="link item" id="show-result">
-                <i class="mobile red icon"></i>
-                <b>暂停-</b><span style="font-size: 8px; color: red;">洗手间</span>
-                <div class="menu transition hidden">
-                  <a class="item">洗手间</a>
-                  <a class="item">小休</a>
-                  <a class="item">培训</a>
-                  <a class="item">用餐</a>
-                </div>
-              </div>
-            <a class="item">
-              <i class="call square blue icon"></i>
-              拨打
-            </a>
-            <a class="item">
-              <i class="calendar grey icon"></i>
-              日志
-            </a>
-            <div class="link item" id="show-result-2">
-              <i class="block layout grey icon"></i>
-              <b>其他</b>
-              <div class="menu transition hidden">
-                <a class="item">修改密码</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-    <!-- </div> -->
-
-    <script>
-      var vm = new Vue({
-        el: "#app",
-        data:{
-          isReady: false,
-          changeColor: 'red',
-        },
-        watch: {
-          username: function() {
-            var isText = /^[a-zA-Z0-9]+$/;
-            if (!isText.test(this.username)) {
-              this.usernameError = true;
-              this.userErrMsg = '請勿包含特殊字元';
-            }
-            else if (this.username.length > 10) {
-              this.usernameError = true;
-              this.userErrMsg = '請勿超過10個字';
-            }
-            else {
-              this.usernameError = false;
-            }
-          }
-        },
-        methods:{
-          login_or_registration: function () {
-            this.isLogin = ! this.isLogin
-            this.login_n = 0
-            this.register_n = 0
-          }
-        }
-      })
-      $('#show-result').dropdown();
-      $('#show-result-2').dropdown();
-      // $('#show-result-2').transition({
-      //   on: 'click',
-      // }
-      //   );
-    </script>
-
+  <body >
+    <div id="no-key-example" class="demo">
+  <div>
+    <template v-if="loginType === 'username'">
+      <label>Username</label>
+      <input placeholder="Enter your username">
+    </template>
+    <template v-else="">
+      <label>Email</label>
+      <input placeholder="Enter your email address">
+    </template>
+  </div>
+  <button @click="toggleLoginType">Toggle login type</button>
+</div>
+<script>
+new Vue({
+  el: '#no-key-example',
+  data: {
+    loginType: 'username'
+  },
+  methods: {
+    toggleLoginType: function () {
+      console.log('aaaaaaaaaaaaaaaa')
+      return this.loginType = this.loginType === 'username' ? 'email' : 'username'
+    }
+  }
+})
+</script>
   </body>
 </html>

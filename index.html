@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="static/css/semantic.css">
     <link rel="Shortcut Icon" href="static/images/favicon.png" type="image/x-icon">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-form/0.3.1/vue-form.min.js"></script> -->
     <title>HomeAgent</title>
   </head>
   <body id="app">
@@ -334,6 +332,7 @@
                 }
               })
               .then(function(res){
+                  console.log(res)
                   if (res.Body.result == "0") {
                     alert(res.Body.msg);
                   } else {

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="static/js/reqwest.js"></script>
+    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="static/css/semantic.css">
+    <link rel="Shortcut Icon" href="static/images/favicon.png" type="image/x-icon">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-form/0.3.1/vue-form.js"></script>
+    <title>HomeAgent</title>
+  </head>
+  <body>
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #f1f1f1;
+      }
+      .ui.vertical.padded.segment.container {
+        height: 450px;
+        width: 450px;
+        position: relative;
+        top: 15%
+      }
+    </style>
+    <div id="app" class="ui vertical padded segment container">
+      <div class="ui header" style="text-align: center;">
+        <img src="static/images/logo-phone-green.png" alt="">
+        <div class="ui large buttons">
+          <a href="login.html" class="ui button" v-on:click="login_or_registration()">登录</a>
+          <div class="or"></div>
+          <a class="ui green button" v-on:click="login_or_registration()">注册</a>
+        </div>
+
+      </div>
+      <div class="ui divider"></div>
+      <div class="ui form">
+        <!-- 用户名 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="用户名">
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <!-- 密码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" placeholder="密码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <!-- 确认密码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="password" placeholder="确认密码">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <!-- 手机/固话/SIP分机选择 -->
+        <div class="inline fields">
+          <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" id="mobile" name="frequency-login" checked="checked"  v-on:click="toggleLoginType('mobile')" >
+                <label for="mobile"><i class="mobile icon"></i>手机</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" id="telephone" name="frequency-login"  v-on:click="toggleLoginType('telephone')">
+                <label for="telephone"><i class="text telephone icon"></i>固话</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+                <input type="radio" id="sip" name="frequency-login"  v-on:click="toggleLoginType('sip')">
+                <label for="sip"><i class="volume control phone icon"></i>SIP分机</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+            <div class="ui left icon input">
+                <template v-if="loginType === 'mobile'">
+                  <input type="text" placeholder="请输入手机号码" >
+                  <i class="mobile icon"></i>
+                </template>
+                <template v-else-if="loginType === 'telephone'">
+                  <input type="text" placeholder="请输入固话号码">
+                  <i class="text telephone icon"></i>
+                </template>
+                <template v-else-if="loginType === 'sip'">
+                  <input type="text" placeholder="请输入SIP号码">
+                  <i class="volume control phone icon"></i>
+                </template>
+            </div>
+          </div>
+        <!-- 邀请码 -->
+        <div class="field">
+          <div class="ui left icon input">
+            <input type="text" placeholder="邀请码">
+            <i class="check square icon"></i>
+          </div>
+        </div>
+        <button class="fluid ui large green circular button" type="submit">注册</button>
+      </div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data:{
+            global_username: '',
+		        global_password:'',
+            registerType: 'mobile',
+            register_value: '',
+		        invitation_code: '',
+        },
+        methods:{
+          toggleLoginType: function (t) {
+
+            console.log(t)
+            if (t === 'mobile') {
+               this.loginType = 'mobile'
+            } else if (t === 'telephone') {
+               this.loginType = 'telephone'
+            } else {
+               this.loginType = 'sip'
+            }
+            console.log(this.loginType)
+            return this.loginType
+          },
+          login_or_registration: function () {
+            this.isLogin = ! this.isLogin;
+            this.login_n = 0;
+            this.register_n = 0;
+          },
+          login:function(){},
+    		  get_active_code:function(){}
+        }
+      });
+    </script>
+  </body>
+</html>
